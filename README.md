@@ -74,3 +74,20 @@ sudo systemd-resolve --flush-caches
    If your main goal is to prevent access entirely, map the domains to `0.0.0.0` in the `/etc/hosts` file. The browser will immediately fail to connect without certificate warnings.
 3. **Displaying a Custom "Blocked" Page**: 
    To display a custom page instead of a certificate error on an HTTPS connection, you would need an advanced corporate setup (like a proxy server with Deep Packet Inspection) and you would have to install a custom Root CA certificate on the target machine's operating system or browser.
+
+
+## Additional commands
+
+```
+DISPLAY=:0 zenity --info --text="Message from ssh"
+```
+
+```
+DISPLAY=:0 notify-send "Message from ssh"
+```
+
+## Iptables drops
+
+```
+sudo iptables -A OUTPUT -d [ADRES_IP] -m owner --uid-owner $(whoami) -j DROP
+```
